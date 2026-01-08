@@ -18,7 +18,7 @@ def generate_files(lines, args):
         "osx-arm64": args.osx_arm64,
     }
 
-    avoid_keywords = {"pdb"}
+    avoid_keywords = {"pdb", "onnxruntime_providers_cuda", "onnxruntime_providers_qnn", "Qnn", "qnn"}
     processed_includes = set()
     for platform, platform_dir in platform_map.items():
         for file in glob.glob(os.path.join(platform_dir, "lib", "*")):
