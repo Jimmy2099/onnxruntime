@@ -119,15 +119,14 @@ extends:
         parameters:
           PreReleaseVersionSuffixString: ${{ parameters.PreReleaseVersionSuffixString }}
           PreReleaseVersionSuffixNumber: ${{ parameters.PreReleaseVersionSuffixNumber }}
-          ort_build_pool_name: 'onnxruntime-Win-CPU-VS2022-Latest'
+          ort_build_pool_name: 'Onnxruntime-QNNEP-Windows-2022-CPU'
           DoCompliance: false
           DoEsrp: true
           stage_name_suffix: CPU_arm64
-          artifact_name_suffix: '-wcos'
           buildArch: x64
           msbuildPlatform: arm64
           packageName: arm64
-          buildparameter: --caller_framework WinAI
+          buildparameter: --arm64 --buildasx --caller_framework WinAI
           runTests: false
           buildJava: false
           buildNodejs: false

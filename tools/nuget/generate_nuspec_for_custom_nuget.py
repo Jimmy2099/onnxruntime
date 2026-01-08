@@ -24,9 +24,10 @@ def generate_files(lines, args):
         for file in glob.glob(os.path.join(platform_dir, "lib", "*")):
             if not os.path.isfile(file):
                 continue
-            if any(keyword in file for keyword in avoid_keywords):
-                continue
+
             file_name = os.path.basename(file)
+            if any(keyword in file_name for keyword in avoid_keywords):
+                continue
 
             files_list.append(f'<file src="{file}" target="runtimes/{platform}/native/{file_name}" />')
 
