@@ -152,7 +152,7 @@ extends:
           DoEsrp: true
 
       - stage: NugetPackaging
-        dependsOn: [Windows_Packaging_CUDA, OnnxRuntime_QNN_Nuget_Win_Arm64, MacOS_C_API_Package_Publish]
+        dependsOn: [Windows_Packaging_CUDA, Windows_Packaging_CPU_arm64, MacOS_C_API_Package_Publish]
         jobs:
         - job: CreateNugetPackage
           pool: 'Onnxruntime-Win2022-GPU-A10'
