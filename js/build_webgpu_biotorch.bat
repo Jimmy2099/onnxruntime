@@ -76,9 +76,12 @@ set PATH=C:\Program Files\CMake\bin;%PATH%
 
 @rem call %ROOT%build.bat --config %CONFIG% %CONFIG_EXTRA_FLAG% --skip_submodule_sync --target onnxruntime_webassembly --skip_tests^
 @rem  --enable_wasm_simd --enable_wasm_threads --use_webgpu --wgsl_template dynamic --enable_wasm_jspi --build_dir %BUILD_DIR%
-@rem  --build_wasm  --use_webnn 
+@rem  --build_wasm  --use_webnn
+@REM call %ROOT%build.bat --config %CONFIG% %CONFIG_EXTRA_FLAG% --skip_submodule_sync --use_webgpu --wgsl_template dynamic --skip_tests   --cmake_extra_defines "" --build_dir %BUILD_DIR%
+@REM https://github.com/microsoft/onnxruntime/pull/23096
 
-call %ROOT%build.bat --config %CONFIG% %CONFIG_EXTRA_FLAG% --skip_submodule_sync --use_webgpu --wgsl_template dynamic --skip_tests --build_dir %BUILD_DIR%
+
+call %ROOT%build.bat --config %CONFIG% %CONFIG_EXTRA_FLAG% --config Release --skip_submodule_sync --use_webgpu --wgsl_template dynamic --skip_tests --build_shared_lib --use_external_dawn --build_dir %BUILD_DIR%
 
 IF NOT "%ERRORLEVEL%" == "0" (
   exit /b %ERRORLEVEL%
